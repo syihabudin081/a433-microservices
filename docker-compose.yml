@@ -1,0 +1,32 @@
+# Versi dari Docker Compose yang digunakan
+version: '3.7'
+
+# Konfigurasi layanan Docker Compose
+services:
+  # Layanan untuk aplikasi item-app
+  item-app:
+    # Menggunakan image ngabtapir/item-app:v1 dari Docker Hub
+    image: ngabtapir/item-app:v1
+    # Melakukan port mapping agar aplikasi dapat diakses dari port 80 di host
+    ports:
+      - "80:8080"
+    # Menentukan ketergantungan layanan, item-app akan diluncurkan setelah item-db
+    depends_on:
+      - item-db
+    # Restart policy untuk layanan item-app, selalu restart jika berhenti
+    restart: always
+
+  # Layanan untuk database item-db
+  item-db:
+    # Menggunakan image mongo:3 dari Docker Hub
+    image: mongo:3
+    # Membuat volume bernama app-db yang akan digunakan oleh database
+    volumes:
+      - app-db:/data/db
+    # Restart policy untuk layanan item-db, selalu restart jika berhenti
+    restart: always
+
+# Konfigurasi volume untuk layanan Docker Compose
+volumes:
+  # Volume untuk database item-db
+  app-db:
