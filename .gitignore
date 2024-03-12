@@ -23,4 +23,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 .env
+<<<<<<< HEAD
 .envlocal
+=======
+>>>>>>> ed5fdf6eff3d540941f09037ee758b3eb47b6e05
