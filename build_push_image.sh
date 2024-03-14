@@ -6,6 +6,7 @@ source .env
 # Set the image name with GHCR prefix (replace 'username' with your actual username)
 IMAGE_NAME=ghcr.io/syihabudin081/a433-microservices/shipping-service:latest
 
+#build the image
 docker build -t "$IMAGE_NAME" .
 
 # Login to GHCR using personal access token with Docker permissions
